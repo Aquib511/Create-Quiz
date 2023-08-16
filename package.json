@@ -7,7 +7,7 @@
   "scripts": {
     "start:client": "cd client && npm start",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "deploy": "gh-pages -d client/build",
     "start:server": "cd server && nodemon server.js",
     "start:both": "concurrently \"npm run start:client\" \"npm run start:server\"",
     "build": "cd client && npm run build"
