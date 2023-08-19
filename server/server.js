@@ -4,7 +4,9 @@ const dotenv = require("dotenv");
 const connectDB = require("./config/db");
 const setMiddleware = require("./config/middleware");
 
+// Routes
 const userRoutes = require("./routes/users/auth");
+const quizRoutes = require("./routes/quiz");
 
 // Load environment variables
 dotenv.config();
@@ -15,6 +17,7 @@ const app = express();
 setMiddleware(app);
 
 app.use("/api/users", userRoutes);
+app.use("/api/quiz", quizRoutes);
 
 // Connect to MongoDB
 connectDB();

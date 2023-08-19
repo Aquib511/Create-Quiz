@@ -1,117 +1,142 @@
+// import React, { useState, useEffect } from "react";
+// import axios from "axios";
+
+// const QuizPage = ({ match }) => {
+//   const [questions, setQuestions] = useState([]);
+//   const [timeLeft, setTimeLeft] = useState(null);
+//   const [loading, setLoading] = useState(true);
+//   const [error, setError] = useState(null);
+//   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+//   const quizId = match.params.id; // Assuming you're using react-router and have a route like "/quiz/:id"
+
+//   useEffect(() => {
+//     const fetchQuizData = async () => {
+//       try {
+//         const response = await axios.get(`/api/quiz/${quizId}`);
+//         setQuestions(response.data.questions);
+//         setTimeLeft(response.data.time);
+//         setLoading(false);
+//       } catch (error) {
+//         console.error("Error fetching quiz data:", error);
+//         setError(error);
+//         setLoading(false);
+//       }
+//     };
+
+//     fetchQuizData();
+//   }, [quizId]);
+
+//   useEffect(() => {
+//     if (timeLeft === null) return;
+
+//     const timer = setInterval(() => {
+//       setTimeLeft((prevTime) => {
+//         if (prevTime <= 1) {
+//           // Here, you can handle the quiz submission when time runs out
+//           return 0;
+//         }
+//         if (prevTime === 5 * 60) {
+//           alert("Warning: Only 5 minutes left!");
+//         }
+//         return prevTime - 1;
+//       });
+//     }, 1000);
+
+//     return () => clearInterval(timer);
+//   }, [timeLeft]);
+
+//   if (loading) {
+//     return <div>Loading...</div>;
+//   }
+
+//   if (error) {
+//     return <div>Error: {error.message}</div>;
+//   }
+
+//   return (
+//     <div className="quiz-container">
+//       <div className="timer">Time left: {timeLeft} seconds</div>
+//       <div className="question">
+//         {questions[currentQuestionIndex]?.questionText}
+//       </div>
+//       <div className="options">
+//         {questions[currentQuestionIndex]?.options.map((option, index) => (
+//           <button key={index}>{option}</button>
+//         ))}
+//       </div>
+//       <div className="navigation">
+//         {questions.map((_, index) => (
+//           <button key={index} onClick={() => setCurrentQuestionIndex(index)}>
+//             {index + 1}
+//           </button>
+//         ))}
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default QuizPage;
+// ------------------------------------------------------------------
+
+// /client/src/pages/QuizPage/QuizPage.js
+
+// /client/src/pages/QuizPage/QuizPage.js
+
 import React, { useState } from "react";
-import "./QuizPage.css";
+import { useLocation } from "react-router-dom";
 
 const QuizPage = () => {
-  const [selectedOption, setSelectedOption] = useState(null);
+  const location = useLocation();
+  const fetchedQuizData = location.state.quizData;
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const questions = [
-    {
-      question: "What is the capital of France?",
-      options: ["Berlin", "Madrid", "Paris", "Rome"],
-      correct: 2,
-    },
-    {
-      question: "Which planet is known as the 'Red Planet'?",
-      options: ["Mars", "Venus", "Jupiter", "Saturn"],
-      correct: 0,
-    },
-    {
-      question: "Which of the following is not a prime number?",
-      options: ["2", "3", "4", "5"],
-      correct: 2,
-    },
-    {
-      question: "Who wrote the play 'Romeo and Juliet'?",
-      options: [
-        "Charles Dickens",
-        "William Shakespeare",
-        "Jane Austen",
-        "George Orwell",
-      ],
-      correct: 1,
-    },
-    {
-      question: "What is the largest mammal?",
-      options: ["Elephant", "Whale", "Giraffe", "Hippopotamus"],
-      correct: 1,
-    },
-    {
-      question: "Which gas do plants absorb from the atmosphere?",
-      options: ["Oxygen", "Carbon Dioxide", "Nitrogen", "Helium"],
-      correct: 1,
-    },
-    {
-      question: "Which country is known as the 'Land of the Rising Sun'?",
-      options: ["China", "South Korea", "Japan", "Thailand"],
-      correct: 2,
-    },
-    {
-      question: "Which element has the chemical symbol 'Au'?",
-      options: ["Silver", "Gold", "Aluminum", "Argon"],
-      correct: 1,
-    },
-    {
-      question: "Which ocean is the largest?",
-      options: [
-        "Atlantic Ocean",
-        "Indian Ocean",
-        "Arctic Ocean",
-        "Pacific Ocean",
-      ],
-      correct: 3,
-    },
-    // ... add more questions as needed
-  ];
+  const [selectedOption, setSelectedOption] = useState(null);
 
-  const handleOptionChange = (index) => {
-    setSelectedOption(index);
+  const handleOptionChange = (option) => {
+    setSelectedOption(option);
   };
 
-  const handleNavigation = (direction) => {
-    if (direction === "prev" && currentQuestionIndex > 0) {
-      setCurrentQuestionIndex(currentQuestionIndex - 1);
-      setSelectedOption(null);
-    } else if (
-      direction === "next" &&
-      currentQuestionIndex < questions.length - 1
-    ) {
+  const handleNext = () => {
+    if (currentQuestionIndex < fetchedQuizData.quiz.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
-      setSelectedOption(null);
+      setSelectedOption(null); // Reset the selected option
     }
   };
 
+  const handlePrevious = () => {
+    if (currentQuestionIndex > 0) {
+      setCurrentQuestionIndex(currentQuestionIndex - 1);
+      setSelectedOption(null); // Reset the selected option
+    }
+  };
+
+  const currentQuestion = fetchedQuizData.quiz[currentQuestionIndex];
+
   return (
     <div className="quiz-container">
-      <h2>{questions[currentQuestionIndex].question}</h2>
+      <h2>{fetchedQuizData.quizName}</h2>
+      <p>{currentQuestion.questionText}</p>
       <div className="options">
-        {questions[currentQuestionIndex].options.map((option, index) => (
+        {currentQuestion.options.map((option, index) => (
           <label key={index}>
             <input
               type="radio"
-              value={index}
-              checked={selectedOption === index}
-              onChange={() => handleOptionChange(index)}
+              value={option}
+              checked={selectedOption === option}
+              onChange={() => handleOptionChange(option)}
             />
             {option}
           </label>
         ))}
       </div>
-      <div className="timer">00:30</div> {/* Implement timer logic */}
-      <div className="navigation-buttons">
-        <button onClick={() => handleNavigation("prev")}>Previous</button>
-        <button onClick={() => handleNavigation("next")}>Next</button>
-      </div>
-      <div className="question-navigation">
-        {questions.map((_, index) => (
-          <button
-            key={index}
-            className={currentQuestionIndex === index ? "active" : ""}
-            onClick={() => setCurrentQuestionIndex(index)}
-          >
-            {index + 1}
-          </button>
-        ))}
-      </div>
+      <button onClick={handlePrevious} disabled={currentQuestionIndex === 0}>
+        Previous
+      </button>
+      <button
+        onClick={handleNext}
+        disabled={currentQuestionIndex === fetchedQuizData.quiz.length - 1}
+      >
+        Next
+      </button>
     </div>
   );
 };

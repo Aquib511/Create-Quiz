@@ -63,9 +63,7 @@ exports.loginUser = async (req, res) => {
         .json({ msg: "User does not exist. Please register." });
     } else {
       // Compare the provided password with the stored hashed password
-      // console.log(password, user.password);
       const isMatch = await bcrypt.compare(password, user.password);
-      // console.log(isMatch);
 
       if (!isMatch) {
         return res.status(400).json({ msg: "Incorrect password." });
@@ -78,14 +76,23 @@ exports.loginUser = async (req, res) => {
         },
       };
 
-      // Sign the JWT and send it as a response
+      // Sign the JWT
       jwt.sign(
         payload,
         process.env.JWT_SECRET,
-        { expiresIn: "1h" },
+        { expiresIn: "24h" },
         (err, token) => {
           if (err) throw err;
-          res.json({ token, msg: "Login successful!" });
+
+          // Exclude sensitive information from the user object
+          user.password = undefined;
+
+          // Send the user object along with the token in the response
+          res.json({
+            token,
+            user, // <-- This sends the user object in the response
+            msg: "Login successful!",
+          });
         }
       );
     }

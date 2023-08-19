@@ -12,7 +12,6 @@
     "start:both": "concurrently \"npm run start:client\" \"npm run start:server\"",
     "build": "cd client && npm run build"
   },
-  
   "keywords": [],
   "author": "",
   "license": "ISC",
