@@ -1,0 +1,22 @@
+.about-container {
+  padding: 20px;
+  /* ... other styles ... */
+}
+
+.feature {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.feature-icon {
+  font-size: 40px;
+  margin-right: 20px;
+}
+
+h2 {
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+/* ... your other styles ... */

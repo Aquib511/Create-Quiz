@@ -1,0 +1,194 @@
+{
+  "quizId": "xxx00",
+  "quizName": "Java OOPs Quiz",
+  "timeOfQuiz": 15,
+  "startTime": null,
+  "marksPerQuestion": 1,
+  "instructions": [
+    "Choose the best answer.",
+    "You have 15 minutes to complete this quiz."
+  ],
+  "result": 0,
+  "quiz": [
+    {
+      "questionId": "2001",
+      "questionText": "Which of these is not an OOP principle?",
+      "options": [
+        { "optionId": "2001A", "optionText": "Inheritance" },
+        { "optionId": "2001B", "optionText": "Polymorphism" },
+        { "optionId": "2001C", "optionText": "Compilation" },
+        { "optionId": "2001D", "optionText": "Encapsulation" }
+      ],
+      "rightAns": "2001C",
+      "rightAnsStr": "Compilation"
+    },
+    {
+      "questionId": "2002",
+      "questionText": "Which of these is not a type of constructor?",
+      "options": [
+        { "optionId": "2002A", "optionText": "Copy" },
+        { "optionId": "2002B", "optionText": "Default" },
+        { "optionId": "2002C", "optionText": "Bytecode" },
+        { "optionId": "2002D", "optionText": "Parameterized" }
+      ],
+      "rightAns": "2002C",
+      "rightAnsStr": "Bytecode"
+    },
+    {
+      "questionId": "2003",
+      "questionText": "What does the 'super' keyword in Java denote?",
+      "options": [
+        { "optionId": "2003A", "optionText": "Child class" },
+        { "optionId": "2003B", "optionText": "Current class" },
+        { "optionId": "2003C", "optionText": "Base class" },
+        { "optionId": "2003D", "optionText": "None of the above" }
+      ],
+      "rightAns": "2003C",
+      "rightAnsStr": "Base class"
+    },
+    {
+      "questionId": "2004",
+      "questionText": "Which keyword is used to declare an interface?",
+      "options": [
+        { "optionId": "2004A", "optionText": "interface" },
+        { "optionId": "2004B", "optionText": "inf" },
+        { "optionId": "2004C", "optionText": "Intf" },
+        { "optionId": "2004D", "optionText": "InterfaceDeclare" }
+      ],
+      "rightAns": "2004A",
+      "rightAnsStr": "interface"
+    },
+    {
+      "questionId": "2005",
+      "questionText": "Which of these access specifiers can be used for an interface?",
+      "options": [
+        { "optionId": "2005A", "optionText": "Public" },
+        { "optionId": "2005B", "optionText": "Protected" },
+        { "optionId": "2005C", "optionText": "Private" },
+        { "optionId": "2005D", "optionText": "None of the above" }
+      ],
+      "rightAns": "2005A",
+      "rightAnsStr": "Public"
+    },
+    {
+      "questionId": "2006",
+      "questionText": "Which of these keywords is used to define interfaces in Java?",
+      "options": [
+        { "optionId": "2006A", "optionText": "Interface" },
+        { "optionId": "2006B", "optionText": "Obj" },
+        { "optionId": "2006C", "optionText": "def" },
+        { "optionId": "2006D", "optionText": "None of the above" }
+      ],
+      "rightAns": "2006A",
+      "rightAnsStr": "Interface"
+    },
+    {
+      "questionId": "2007",
+      "questionText": "Which of these is a correct way to declare an interface?",
+      "options": [
+        { "optionId": "2007A", "optionText": "interface = myInterface{}" },
+        { "optionId": "2007B", "optionText": "interface myInterface()" },
+        { "optionId": "2007C", "optionText": "interface myInterface{}" },
+        { "optionId": "2007D", "optionText": "interface : myInterface{}" }
+      ],
+      "rightAns": "2007C",
+      "rightAnsStr": "interface myInterface{}"
+    },
+    {
+      "questionId": "2008",
+      "questionText": "What is the output of 'instanceof' operator when it is false?",
+      "options": [
+        { "optionId": "2008A", "optionText": "0" },
+        { "optionId": "2008B", "optionText": "False" },
+        { "optionId": "2008C", "optionText": "Error" },
+        { "optionId": "2008D", "optionText": "1" }
+      ],
+      "rightAns": "2008B",
+      "rightAnsStr": "False"
+    },
+    {
+      "questionId": "2009",
+      "questionText": "Which of these is not a Java OOP concept?",
+      "options": [
+        { "optionId": "2009A", "optionText": "Methods" },
+        { "optionId": "2009B", "optionText": "Polymorphism" },
+        { "optionId": "2009C", "optionText": "Strings" },
+        { "optionId": "2009D", "optionText": "Inheritance" }
+      ],
+      "rightAns": "2009C",
+      "rightAnsStr": "Strings"
+    },
+    {
+      "questionId": "2010",
+      "questionText": "Which keyword is used for inheriting features of a class?",
+      "options": [
+        { "optionId": "2010A", "optionText": "extend" },
+        { "optionId": "2010B", "optionText": "extends" },
+        { "optionId": "2010C", "optionText": "inherit" },
+        { "optionId": "2010D", "optionText": "inherits" }
+      ],
+      "rightAns": "2010B",
+      "rightAnsStr": "extends"
+    },
+    {
+      "questionId": "2011",
+      "questionText": "Which method can be defined only once in a program?",
+      "options": [
+        { "optionId": "2011A", "optionText": "finalize method" },
+        { "optionId": "2011B", "optionText": "main method" },
+        { "optionId": "2011C", "optionText": "static method" },
+        { "optionId": "2011D", "optionText": "private method" }
+      ],
+      "rightAns": "2011B",
+      "rightAnsStr": "main method"
+    },
+    {
+      "questionId": "2012",
+      "questionText": "Which of these operators can be used to continue a statement in a new line?",
+      "options": [
+        { "optionId": "2012A", "optionText": "\\" },
+        { "optionId": "2012B", "optionText": "/" },
+        { "optionId": "2012C", "optionText": ":" },
+        { "optionId": "2012D", "optionText": "_" }
+      ],
+      "rightAns": "2012A",
+      "rightAnsStr": "\\"
+    },
+    {
+      "questionId": "2013",
+      "questionText": "Which of these is not a method of the 'Object' class?",
+      "options": [
+        { "optionId": "2013A", "optionText": "toString()" },
+        { "optionId": "2013B", "optionText": "finalize()" },
+        { "optionId": "2013C", "optionText": "getBytes()" },
+        { "optionId": "2013D", "optionText": "equals()" }
+      ],
+      "rightAns": "2013C",
+      "rightAnsStr": "getBytes()"
+    },
+    {
+      "questionId": "2014",
+      "questionText": "Which keyword is used to prevent method overriding?",
+      "options": [
+        { "optionId": "2014A", "optionText": "static" },
+        { "optionId": "2014B", "optionText": "final" },
+        { "optionId": "2014C", "optionText": "unmodifiable" },
+        { "optionId": "2014D", "optionText": "none of the above" }
+      ],
+      "rightAns": "2014B",
+      "rightAnsStr": "final"
+    },
+    {
+      "questionId": "2015",
+      "questionText": "What is a class that is derived from another class?",
+      "options": [
+        { "optionId": "2015A", "optionText": "Parent class" },
+        { "optionId": "2015B", "optionText": "Sibling class" },
+        { "optionId": "2015C", "optionText": "Subclass" },
+        { "optionId": "2015D", "optionText": "Super class" }
+      ],
+      "rightAns": "2015C",
+      "rightAnsStr": "Subclass"
+    }
+  ]
+}

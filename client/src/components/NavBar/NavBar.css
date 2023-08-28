@@ -1,17 +1,41 @@
+
+
+
+
 .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-  background-color: #333;
-  color: #fff;
+  background-color:#3c3a33;
+  text-decoration-color: #fff ;
+  background-blend-mode: darken;
+  top: 20px;
+    height: 64px;
+    padding: 3px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.navbar-logo a {
-  font-size: 1.5rem;
-  color: #fff;
-  text-decoration: none;
+/* NavBar.css */
+
+/* ... (existing styles) ... */
+
+.navbar-logo {
+  width: 8vh; /* Adjust the width as needed */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  
 }
+
+/* Adjust the logo size */
+.logo-image {
+  padding-top: 13px;
+  max-width: 100%;
+  max-height: 100%;
+  padding-left:13px ;
+  
+}
+
+/* ... (existing styles) ... */
 
 .navbar-links {
   list-style-type: none;
@@ -25,14 +49,24 @@
 
 .navbar-links li a {
   text-decoration: none;
-  color: #fff;
+  color:#fff;
   padding: 0.5rem 1rem;
   border-radius: 5px;
   transition: background-color 0.3s ease;
 }
 
-.navbar-links li a:hover {
-  background-color: #555;
+.navbar ul li::after{
+  content:'';
+  height: 3px;
+  width: 0;
+  background: #009688;
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  transition: 0.5s;
+}
+.navbar ul li:hover::after{
+  width: 100%;
 }
 
 .dropdown-menu {

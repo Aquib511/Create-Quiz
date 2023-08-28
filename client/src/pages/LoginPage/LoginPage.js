@@ -35,6 +35,7 @@ const LoginPage = () => {
         }
 
         await dispatch(loginSuccess(response.data.user)); // Update the Redux store with user data
+        alert("Login Successful, Create Quiz.");
         navigate("/"); // Redirect to home page
       } else {
         setMessage(response.data.message || "Successful Login");
@@ -45,6 +46,7 @@ const LoginPage = () => {
   };
 
   return (
+    <div className="login-page">
     <div className="login-container">
       <h2>Login</h2>
       {message && <p className="message">{message}</p>}
@@ -75,6 +77,7 @@ const LoginPage = () => {
         <Link to="/register">Register</Link>
         <Link to="/forgot-password">Forgot Password?</Link>
       </div>
+    </div>
     </div>
   );
 };

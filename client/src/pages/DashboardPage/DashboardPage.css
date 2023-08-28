@@ -36,3 +36,38 @@
   padding: 10px;
   margin-left: 20px;
 }
+
+.dashboard a {
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.dashboard a:hover {
+  text-decoration: none;
+}
+
+.faded {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.results-table {
+  margin-top: 20px;
+}
+
+.results-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.results-table th,
+.results-table td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: left;
+}
+
+.results-table th {
+  background-color: #f2f2f2;
+}

@@ -3,25 +3,21 @@ const router = express.Router();
 
 const {
   createQuiz,
-  getQuizById,
+  getQuizByQuizId,
   editQuiz,
   deleteQuiz,
-  getQuizzesByUsername,
 } = require("../controllers/quizController");
 
 // Create a new quiz
 router.post("/create", createQuiz);
 
-// Fetch a quiz by its ID
-router.get("/:quizId", getQuizById);
+// Fetch a quiz by its quizId ==>> hit from home page
+router.get("/:quizId", getQuizByQuizId);
 
-// Edit a quiz
-router.put("/edit/:quizId", editQuiz);
+// updates the quiz
+// router.patch("/edit/:quizId", editQuiz);
+router.patch("/edit", editQuiz);
 
-// Delete a quiz
-router.delete("/delete/:quizId", deleteQuiz);
-
-// Fetch all quizzes by a username
-router.get("/user/:username", getQuizzesByUsername);
+router.delete("/delete", deleteQuiz);
 
 module.exports = router;

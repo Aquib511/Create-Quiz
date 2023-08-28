@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux"; // <-- Import useDispatch
-import { Link, useNavigate } from "react-router-dom"; // <-- Import useNavigate
-import { logout } from "../../redux/slices/authSlice"; // <-- Import the logout action
+import { useSelector, useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { logout } from "../../redux/slices/authSlice";
+import logoImage from "../../assets/image/logo.png";
 import "./NavBar.css";
 
 function NavBar() {
   const auth = useSelector((state) => state.auth);
-  const dispatch = useDispatch(); // <-- Use the useDispatch hook
-  const navigate = useNavigate(); // <-- Use the useNavigate hook
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [dropdownVisible, setDropdownVisible] = useState(false);
 
   const toggleDropdown = (e) => {
@@ -16,11 +17,15 @@ function NavBar() {
   };
 
   const handleLogout = () => {
-    // <-- Logout function
     dispatch(logout());
+    sessionStorage.clear();
     localStorage.removeItem("token");
     localStorage.removeItem("user");
     navigate("/login");
+  };
+
+  const clearSession = () => {
+    sessionStorage.clear();
   };
 
   useEffect(() => {
@@ -34,24 +39,23 @@ function NavBar() {
       document.removeEventListener("click", closeDropdown);
     };
   }, []);
-
   return (
     <nav className="navbar">
       <div className="navbar-logo">
-        <Link to="/">Logo</Link>
+        <Link to="/" onClick={clearSession}>
+          <img src={logoImage} alt="Logo" className="logo-image" />
+        </Link>
       </div>
       <ul className="navbar-links">
         <li>
-          <Link to="/">Home</Link>
+          <Link to="/" onClick={clearSession}>
+            Home
+          </Link>
         </li>
         <li>
-          <Link to="/about">About</Link>
-        </li>
-        <li>
-          <Link to="/how-to">How to</Link>
-        </li>
-        <li>
-          <Link to="/contact">Contact</Link>
+          <Link to="/about" onClick={clearSession}>
+            About
+          </Link>
         </li>
         {auth.isAuthenticated ? (
           <li onClick={toggleDropdown}>
@@ -59,11 +63,11 @@ function NavBar() {
             {dropdownVisible && (
               <ul className="dropdown-menu">
                 <li>
-                  <Link to="/dashboard">Dashboard</Link>
+                  <Link to="/dashboard" onClick={clearSession}>
+                    Dashboard
+                  </Link>
                 </li>
-                <li>
-                  <Link to="/settings">Settings</Link>
-                </li>
+
                 <li>
                   <a href="/" onClick={handleLogout}>
                     Logout
@@ -92,17 +96,33 @@ export default NavBar;
 // ---------------------------------------
 
 // import React, { useState, useEffect } from "react";
-// import { useSelector } from "react-redux";
-// import { Link } from "react-router-dom";
+// import { useSelector, useDispatch } from "react-redux";
+// import { Link, useNavigate } from "react-router-dom";
+// import { logout } from "../../redux/slices/authSlice";
+// import logoImage from "../../assets/image/logo.png";
 // import "./NavBar.css";
 
 // function NavBar() {
 //   const auth = useSelector((state) => state.auth);
+//   const dispatch = useDispatch();
+//   const navigate = useNavigate();
 //   const [dropdownVisible, setDropdownVisible] = useState(false);
 
 //   const toggleDropdown = (e) => {
 //     e.stopPropagation();
 //     setDropdownVisible(!dropdownVisible);
+//   };
+
+//   const handleLogout = () => {
+//     dispatch(logout());
+//     sessionStorage.clear();
+//     localStorage.removeItem("token");
+//     localStorage.removeItem("user");
+//     navigate("/login");
+//   };
+
+//   const clearSession = () => {
+//     sessionStorage.clear();
 //   };
 
 //   useEffect(() => {
@@ -116,24 +136,33 @@ export default NavBar;
 //       document.removeEventListener("click", closeDropdown);
 //     };
 //   }, []);
-
 //   return (
 //     <nav className="navbar">
 //       <div className="navbar-logo">
-//         <Link to="/">Logo</Link>
+//         <Link to="/" onClick={clearSession}>
+//           <img src={logoImage} alt="Logo" className="logo-image" />
+//         </Link>
 //       </div>
 //       <ul className="navbar-links">
 //         <li>
-//           <Link to="/">Home</Link>
+//           <Link to="/" onClick={clearSession}>
+//             Home
+//           </Link>
 //         </li>
 //         <li>
-//           <Link to="/about">About</Link>
+//           <Link to="/about" onClick={clearSession}>
+//             About
+//           </Link>
 //         </li>
 //         <li>
-//           <Link to="/how-to">How to</Link>
+//           <Link to="/how-to" onClick={clearSession}>
+//             How to
+//           </Link>
 //         </li>
 //         <li>
-//           <Link to="/contact">Contact</Link>
+//           <Link to="/contact" onClick={clearSession}>
+//             Contact
+//           </Link>
 //         </li>
 //         {auth.isAuthenticated ? (
 //           <li onClick={toggleDropdown}>
@@ -141,13 +170,17 @@ export default NavBar;
 //             {dropdownVisible && (
 //               <ul className="dropdown-menu">
 //                 <li>
-//                   <Link to="/dashboard">Dashboard</Link>
+//                   <Link to="/dashboard" onClick={clearSession}>
+//                     Dashboard
+//                   </Link>
 //                 </li>
 //                 <li>
 //                   <Link to="/settings">Settings</Link>
 //                 </li>
 //                 <li>
-//                   <Link to="/logout">Logout</Link>
+//                   <a href="/" onClick={handleLogout}>
+//                     Logout
+//                   </a>{" "}
 //                 </li>
 //               </ul>
 //             )}

@@ -1,11 +1,71 @@
 .footer {
-  background-color: #222;
+  background-color: #3c3a33;
   color: #fff;
-  padding: 2rem;
+  padding: 5px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
+  bottom: 0;
+  width: 100%;
+}
+
+.quick-links,
+.social-media,
+.contact-info,
+.newsletter {
+  flex: 1;
+  margin: 1rem;
+}
+
+.footer a {
+  color: #fff;
+  text-decoration: none;
+  margin-right: 1rem;
+  transition: color 0.3s;
+}
+
+.footer a:hover {
+  color: #f5a623; /* Some color for hover effect */
+}
+
+.newsletter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.newsletter input[type="email"] {
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+}
+
+.newsletter button {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #f5a623;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.newsletter button:hover {
+  background-color: #ffbb77;
+}
+
+/* .footer {
+  background-color: #3c3a33;
+  color: #fff;
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  
+  bottom: 0;
+  width: 100%;
 }
 
 .quick-links,
@@ -24,4 +84,4 @@
 
 .footer a:hover {
   text-decoration: underline;
-}
+} */

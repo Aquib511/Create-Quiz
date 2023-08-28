@@ -17,7 +17,6 @@ const QuizPage = () => {
   const [timeLeft, setTimeLeft] = useState(fetchedQuizData?.timeOfQuiz * 60);
   const [isChecked, setIsChecked] = useState(false);
   const [markedQuestions, setMarkedQuestions] = useState([]);
-  const [shuffledQuizData, setShuffledQuizData] = useState(null);
 
   const fetchQuizData = useCallback(async () => {
     try {
@@ -155,32 +154,6 @@ const QuizPage = () => {
     setSelectedOption(selectedAnswer || null);
   }, [currentQuestionIndex, quizId]);
 
-  // Shuffle function
-  function shuffleArray(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
-    }
-    return array;
-  }
-
-  useEffect(() => {
-    if (fetchedQuizData) {
-      // Shuffling questions
-      const randomizedQuestions = shuffleArray([...fetchedQuizData.quiz]);
-
-      // Shuffling options for each question
-      randomizedQuestions.forEach((question) => {
-        question.options = shuffleArray([...question.options]);
-      });
-
-      setShuffledQuizData({
-        ...fetchedQuizData,
-        quiz: randomizedQuestions,
-      });
-    }
-  }, [fetchedQuizData]);
-
   const handleOptionChange = (optionId) => {
     setSelectedOption(optionId);
     let quizTaken = JSON.parse(sessionStorage.getItem("quizTaken")) || {};
@@ -219,12 +192,11 @@ const QuizPage = () => {
     }
   };
 
-  const currentQuestion = shuffledQuizData?.quiz[currentQuestionIndex];
-
+  const currentQuestion = fetchedQuizData.quiz[currentQuestionIndex];
   return (
     <div className="quiz-container">
       <div className="question-navigation">
-        {shuffledQuizData?.quiz.map((_, index) => {
+        {fetchedQuizData.quiz.map((_, index) => {
           const quizTaken =
             JSON.parse(sessionStorage.getItem("quizTaken")) || {};
           const isAttempted = !!quizTaken[quizId]?.[index];
@@ -244,7 +216,7 @@ const QuizPage = () => {
       </div>
 
       <div className="quiz-content">
-        <h2>{shuffledQuizData?.quizName}</h2>
+        <h2>{fetchedQuizData.quizName}</h2>
         <div className="timer">
           <h3>
             Time Left : {Math.floor(timeLeft / 60)}:
@@ -253,10 +225,10 @@ const QuizPage = () => {
           </h3>
         </div>
 
-        <h2>{currentQuestion?.questionText}</h2>
+        <h2>{currentQuestion.questionText}</h2>
         <div className="options">
           <div className="options-grid">
-            {currentQuestion?.options.map((option, index) => (
+            {currentQuestion.options.map((option, index) => (
               <label
                 key={option.optionId}
                 className={`option option-${index + 1} ${
@@ -285,7 +257,7 @@ const QuizPage = () => {
             <button
               onClick={handleNext}
               disabled={
-                currentQuestionIndex === shuffledQuizData?.quiz.length - 1
+                currentQuestionIndex === fetchedQuizData.quiz.length - 1
               }
             >
               Next
