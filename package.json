@@ -12,13 +12,19 @@
     "start:both": "concurrently \"npm run start:client\" \"npm run start:server\"",
     "build": "cd client && npm run build"
   },
-  
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.4.2",
+    "@fortawesome/free-solid-svg-icons": "^6.4.2",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "axios": "^1.5.0",
     "client": "file:./client",
-    "server": "file:./server"
+    "react-icons": "^4.10.1",
+    "react-router-dom": "^6.15.0",
+    "server": "file:./server",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "concurrently": "^8.2.0",
