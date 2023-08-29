@@ -1,0 +1,128 @@
+/* General Styles */
+.dashboard {
+  font-family: 'Arial', sans-serif;
+  background-color: #f7f9fc; 
+  padding: 40px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dashboard-content {
+  display: flex;
+  width: 100%;
+  max-width: 1200px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  background-color: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* Sidebar Styles */
+.dashboard-sidebar {
+  width: 30%;
+  padding: 30px;
+  background-color: #2e9ba1; 
+  color: #f5f6fa;
+}
+
+.dashboard-sidebar h2 {
+  font-size: 26px;
+  margin-bottom: 25px;
+  border-bottom: 3px solid #f5f6fa;
+  padding-bottom: 15px;
+}
+
+.dashboard-sidebar a {
+  color: #dcdde1;
+  text-decoration: none;
+  transition: color 0.3s ease, transform 0.3s;
+  display: block;
+  margin-bottom: 10px;
+  padding: 5px 0;
+}
+
+.dashboard-sidebar a:hover {
+  color: #f5f6fa;
+  transform: translateX(10px);
+}
+
+/* Distinct styling for Taken Quiz and Created Quiz */
+/* ... (same as provided) ... */
+
+/* Quiz Info Styles */
+.quiz-info {
+  width: 70%;
+  padding: 30px;
+  background-color: #dfe6e9;
+  transition: background-color 0.3s ease;
+}
+
+/* Quiz Display Styles */
+.quiz-display {
+  width: 100%;
+  padding: 30px;
+}
+
+.results-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.results-table th, .results-table td {
+  border: 1px solid #b2bec3;
+  padding: 12px;
+  text-align: left;
+  transition: background-color 0.3s;
+}
+
+.results-table tr:hover {
+  background-color: #f0f0f0;
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+  .dashboard-content {
+    flex-direction: column;
+  }
+
+  .dashboard-sidebar, .quiz-info {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard {
+    padding: 20px;
+  }
+
+  .dashboard-content {
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+
+  .dashboard-sidebar {
+    padding: 20px;
+  }
+
+  .quiz-info {
+    padding: 20px;
+  }
+
+  .results-table th, .results-table td {
+    padding: 8px;
+  }
+}
+
+@media (max-width: 576px) {
+  .dashboard-sidebar h2 {
+    font-size: 22px;
+  }
+
+  .dashboard-sidebar a {
+    margin-bottom: 8px;
+    padding: 4px 0;
+  }
+}
